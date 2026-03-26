@@ -1,9 +1,16 @@
 import {
+    IconBrandCpp,
     IconBrandFramerMotion,
+    IconBrandGit,
     IconBrandNextjs,
+    IconBrandPython,
     IconBrandReact,
+    IconBrandSupabase,
     IconBrandTailwind,
     IconBrandTypescript,
+    IconBrandVercel,
+    IconDatabase,
+    IconSparkles,
 } from "@tabler/icons-react";
 import { SKILLS } from "@/lib/constants";
 
@@ -24,6 +31,20 @@ const getIcon = (name: string) => {
             return <IconBrandTailwind size={24} stroke={1.5} />;
         case "brand-framer-motion":
             return <IconBrandFramerMotion size={24} stroke={1.5} />;
+        case "brand-postgresql":
+            return <IconDatabase size={24} stroke={1.5} />;
+        case "brand-git":
+            return <IconBrandGit size={24} stroke={1.5} />;
+        case "brand-supabase":
+            return <IconBrandSupabase size={24} stroke={1.5} />;
+        case "brand-vercel":
+            return <IconBrandVercel size={24} stroke={1.5} />;
+        case "brand-cpp":
+            return <IconBrandCpp size={24} stroke={1.5} />;
+        case "brand-python":
+            return <IconBrandPython size={24} stroke={1.5} />;
+        case "sparkles":
+            return <IconSparkles size={24} stroke={1.5} />;
         default:
             return null;
     }

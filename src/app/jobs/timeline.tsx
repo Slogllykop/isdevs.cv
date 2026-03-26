@@ -1,26 +1,19 @@
 "use client";
 
-import { IconBriefcase, IconCode } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { EXPERIENCES } from "@/lib/constants";
 
-const getIcon = (name: string) => {
-    switch (name) {
-        case "briefcase":
-            return <IconBriefcase size={20} className="text-foreground/80" />;
-        case "code":
-            return <IconCode size={20} className="text-foreground/80" />;
-        default:
-            return <IconBriefcase size={20} className="text-foreground/80" />;
-    }
-};
+// Uniform timeline indicator - simple and clean
+const TimelineIndicator = () => (
+    <div className="size-2 rounded-full bg-foreground/40" />
+);
 
 export function JobsTimeline() {
     return (
         <div className="relative ml-4 flex flex-col gap-12 border-foreground/10 border-l pl-8 sm:ml-6 sm:gap-16">
             {EXPERIENCES.map((job, index) => (
                 <motion.div
-                    key={job.id}
+                    key={`${job.company}-${job.role}`}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
@@ -29,7 +22,7 @@ export function JobsTimeline() {
                 >
                     {/* Timeline dot */}
                     <div className="-left-[45px] sm:-left-[53px] absolute top-0 flex size-10 items-center justify-center rounded-full border border-foreground/10 bg-background shadow-sm">
-                        {getIcon(job.logo)}
+                        <TimelineIndicator />
                     </div>
 
                     <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">

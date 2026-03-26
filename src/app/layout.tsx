@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lora, Open_Sans, Inter } from "next/font/google";
+import { Inter, Lora, Open_Sans } from "next/font/google";
 import "./globals.css";
 
 const lora = Lora({
@@ -25,8 +25,7 @@ import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
-
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export default function RootLayout({
     children,
@@ -36,7 +35,14 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className={cn("h-full", "antialiased", lora.variable, openSans.variable, "font-sans", inter.variable)}
+            className={cn(
+                "h-full",
+                "antialiased",
+                lora.variable,
+                openSans.variable,
+                "font-sans",
+                inter.variable,
+            )}
             suppressHydrationWarning
         >
             <body className="relative flex min-h-dvh flex-col font-sans">

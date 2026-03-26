@@ -31,7 +31,7 @@ export function Cursor() {
 
     return (
         <motion.div
-            className="-translate-x-1/2 -translate-y-1/2 opactiy-80 pointer-events-none fixed top-0 left-0 z-100 hidden size-6 rounded-full border border-black sm:block dark:border-white"
+            className="-translate-x-1/2 -translate-y-1/2 pointer-events-none fixed top-0 left-0 z-100 hidden size-6 rounded-full border border-white opacity-80 mix-blend-difference sm:block"
             style={{
                 x: cursorX,
                 y: cursorY,

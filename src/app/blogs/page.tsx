@@ -6,6 +6,7 @@ interface Blog {
     mins_required: number;
     date_uploaded: string;
     date_updated: string;
+    url: string;
 }
 
 export const metadata = {
@@ -25,6 +26,14 @@ export default async function BlogsPage() {
         console.error("Failed to fetch blogs:", e);
     }
 
+    const formatDate = (dateStr: string) => {
+        return new Date(dateStr).toLocaleDateString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+        });
+    };
+
     return (
         <div className="flex flex-col gap-16">
             <div className="flex flex-col gap-4">
@@ -43,33 +52,50 @@ export default async function BlogsPage() {
                     </p>
                 ) : (
                     blogs.map((blog, idx) => (
-                        <article
+                        <a
                             // biome-ignore lint/suspicious/noArrayIndexKey: Renders static data
                             key={idx}
-                            className="group flex flex-col gap-2 border-foreground/10 border-b pb-8 last:border-0 last:pb-0"
+                            href={blog.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group block"
                         >
-                            <div className="flex flex-col gap-2">
-                                <h2 className="font-semibold font-serif text-xl transition-colors group-hover:text-foreground/80 sm:text-2xl">
-                                    {blog.title}
-                                </h2>
-                                <div className="flex items-center gap-3 font-medium text-foreground/60 text-sm">
-                                    <time dateTime={blog.date_uploaded}>
-                                        {new Date(
-                                            blog.date_uploaded,
-                                        ).toLocaleDateString("en-US", {
-                                            month: "long",
-                                            day: "numeric",
-                                            year: "numeric",
-                                        })}
-                                    </time>
-                                    <span>&bull;</span>
-                                    <span>{blog.mins_required} min read</span>
+                            <article className="flex flex-col gap-2 border-foreground/10 border-b pb-8 last:border-0 last:pb-0">
+                                <div className="flex flex-col gap-2">
+                                    <h2 className="font-semibold font-serif text-xl transition-colors group-hover:text-foreground/80 sm:text-2xl">
+                                        {blog.title}
+                                    </h2>
+                                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-medium text-foreground/60 text-sm">
+                                        <div className="flex items-center gap-1">
+                                            <span>Uploaded</span>
+                                            <time
+                                                dateTime={blog.date_uploaded}
+                                                className="tabular-nums"
+                                            >
+                                                {formatDate(blog.date_uploaded)}
+                                            </time>
+                                        </div>
+                                        <span>&bull;</span>
+                                        <div className="flex items-center gap-1">
+                                            <span>Updated</span>
+                                            <time
+                                                dateTime={blog.date_updated}
+                                                className="tabular-nums"
+                                            >
+                                                {formatDate(blog.date_updated)}
+                                            </time>
+                                        </div>
+                                        <span>&bull;</span>
+                                        <span>
+                                            {blog.mins_required} min read
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <p className="mt-2 max-w-2xl text-foreground/80 leading-relaxed">
-                                {blog.description}
-                            </p>
-                        </article>
+                                <p className="mt-2 max-w-2xl text-foreground/80 leading-relaxed">
+                                    {blog.description}
+                                </p>
+                            </article>
+                        </a>
                     ))
                 )}
             </div>

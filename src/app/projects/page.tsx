@@ -21,7 +21,7 @@ export default function ProjectsPage() {
             <div className="flex flex-col gap-8 sm:gap-12">
                 {PROJECTS.map((project) => (
                     <article
-                        key={project.id}
+                        key={project.title}
                         className="group flex flex-col gap-3 border-foreground/10 border-b pb-8 last:border-0 last:pb-0"
                     >
                         <div className="flex items-center justify-between gap-4">

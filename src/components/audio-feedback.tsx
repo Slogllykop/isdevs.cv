@@ -7,21 +7,47 @@ import { useEffect, useRef } from "react";
  * on interactive elements like cards, buttons, and links.
  */
 export function AudioFeedback() {
-    const audioRef = useRef<HTMLAudioElement | null>(null);
+    const audioCtxRef = useRef<AudioContext | null>(null);
+    const audioBufferRef = useRef<AudioBuffer | null>(null);
 
     useEffect(() => {
-        // Preload the tap sound
-        const audio = new Audio("/tap.wav");
-        audio.preload = "auto";
-        audioRef.current = audio;
+        // Initialize AudioContext only on the client
+        const AudioContextClass =
+            // biome-ignore lint/suspicious/noExplicitAny: Required for Safari support
+            window.AudioContext || (window as any).webkitAudioContext;
+        if (AudioContextClass && !audioCtxRef.current) {
+            audioCtxRef.current = new AudioContextClass();
+        }
+
+        // Fetch and decode the audio file once to avoid re-requests
+        const loadAudio = async () => {
+            try {
+                const response = await fetch("/tap.wav");
+                const arrayBuffer = await response.arrayBuffer();
+                if (audioCtxRef.current) {
+                    const audioBuffer =
+                        await audioCtxRef.current.decodeAudioData(arrayBuffer);
+                    audioBufferRef.current = audioBuffer;
+                }
+            } catch (error) {
+                console.error("Failed to load tap sound:", error);
+            }
+        };
+
+        if (!audioBufferRef.current) {
+            loadAudio();
+        }
 
         const playSound = () => {
-            if (audioRef.current) {
-                // Clone the node or reset time to allow rapid playback
-                const sound = audioRef.current.cloneNode() as HTMLAudioElement;
-                sound.play().catch(() => {
-                    // Ignore errors (e.g., user hasn't interacted with the page yet)
-                });
+            if (audioCtxRef.current && audioBufferRef.current) {
+                // Resume AudioContext if suspended (browser auto-play policy requires user interaction)
+                if (audioCtxRef.current.state === "suspended") {
+                    audioCtxRef.current.resume().catch(() => {});
+                }
+                const source = audioCtxRef.current.createBufferSource();
+                source.buffer = audioBufferRef.current;
+                source.connect(audioCtxRef.current.destination);
+                source.start(0);
             }
         };
 
@@ -49,9 +75,11 @@ export function AudioFeedback() {
         return () => {
             document.removeEventListener("mouseover", handleInteraction);
             document.removeEventListener("focusin", handleInteraction);
-            if (audioRef.current) {
-                audioRef.current = null;
+            if (audioCtxRef.current && audioCtxRef.current.state !== "closed") {
+                audioCtxRef.current.close().catch(() => {});
+                audioCtxRef.current = null;
             }
+            audioBufferRef.current = null;
         };
     }, []);
 

@@ -23,13 +23,31 @@ export function Header() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Prevent scrolling when menu is open
+    // Prevent scrolling and manage accessibility when menu is open
     useEffect(() => {
+        const main = document.getElementById("main-content");
+        const footer = document.querySelector("footer");
+
         if (isOpen) {
             document.body.style.overflow = "hidden";
+            main?.setAttribute("inert", "");
+            footer?.setAttribute("inert", "");
         } else {
             document.body.style.overflow = "unset";
+            main?.removeAttribute("inert");
+            footer?.removeAttribute("inert");
         }
+
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === "Escape") setIsOpen(false);
+        };
+
+        window.addEventListener("keydown", handleEsc);
+        return () => {
+            window.removeEventListener("keydown", handleEsc);
+            main?.removeAttribute("inert");
+            footer?.removeAttribute("inert");
+        };
     }, [isOpen]);
 
     // Close menu on navigation
@@ -95,8 +113,10 @@ export function Header() {
                     <button
                         type="button"
                         onClick={() => setIsOpen(!isOpen)}
-                        className="relative z-110 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background transition-colors hover:bg-accent"
-                        aria-label="Toggle menu"
+                        className="relative z-110 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        aria-label={isOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={isOpen}
+                        aria-controls="mobile-menu"
                     >
                         <AnimatePresence mode="wait" initial={false}>
                             {isOpen ? (
@@ -129,10 +149,14 @@ export function Header() {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
+                        id="mobile-menu"
                         className="fixed inset-0 z-100 overflow-hidden md:hidden"
                         initial="closed"
                         animate="open"
                         exit="closed"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label="Mobile navigation"
                     >
                         {/* The Expanding Circular Background */}
                         <motion.div

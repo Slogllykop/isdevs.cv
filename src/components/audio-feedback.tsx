@@ -27,10 +27,10 @@ export function AudioFeedback() {
 
         let lastElement: HTMLElement | null = null;
 
-        const handleMouseOver = (e: MouseEvent) => {
+        const handleInteraction = (e: Event) => {
             // Find the closest interactive ancestor
             const target = (e.target as HTMLElement).closest(
-                'a:not(.blog-card):not(.project-card), button, [role="button"], .group:not(.blog-card):not(.project-card), .bg-card, .skill-card',
+                'a:not(.blog-card):not(.project-card), button, [role="button"], .group:not(.blog-card):not(.project-card), .bg-card, .skill-card, input, select, textarea',
             ) as HTMLElement;
 
             // Only play if we've entered a new interactive element and it's not the same as before
@@ -42,11 +42,13 @@ export function AudioFeedback() {
             }
         };
 
-        // Use mouseover for event delegation
-        document.addEventListener("mouseover", handleMouseOver);
+        // Use mouseover and focusin for event delegation
+        document.addEventListener("mouseover", handleInteraction);
+        document.addEventListener("focusin", handleInteraction);
 
         return () => {
-            document.removeEventListener("mouseover", handleMouseOver);
+            document.removeEventListener("mouseover", handleInteraction);
+            document.removeEventListener("focusin", handleInteraction);
             if (audioRef.current) {
                 audioRef.current = null;
             }

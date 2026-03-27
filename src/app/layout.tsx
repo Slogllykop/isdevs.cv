@@ -165,10 +165,19 @@ export default function RootLayout({
                     enableSystem
                 >
                     <div className="pointer-events-none fixed inset-0 z-50 bg-[url('/paper-transparent.png')] bg-repeat opacity-50 mix-blend-multiply dark:opacity-0" />
+                    <a
+                        href="#main-content"
+                        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-lg focus:bg-background focus:px-4 focus:py-2 focus:ring-2 focus:ring-ring"
+                    >
+                        Skip to content
+                    </a>
                     <AudioFeedback />
                     <Cursor />
                     <Header />
-                    <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-12">
+                    <main
+                        id="main-content"
+                        className="mx-auto w-full max-w-4xl flex-1 scroll-mt-20 px-6 py-12"
+                    >
                         {children}
                     </main>
                     <Footer />

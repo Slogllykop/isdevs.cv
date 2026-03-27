@@ -125,7 +125,7 @@ button {
 
 @layer base {
     * {
-        @apply border-border outline-ring/50 selection:bg-foreground selection:text-background;
+        @apply border-border selection:bg-foreground selection:text-background focus-visible:outline-2 focus-visible:outline-ring/50 focus-visible:outline-offset-2;
     }
     body {
         @apply bg-background text-foreground font-open-sans;
@@ -136,6 +136,20 @@ button {
     h4,
     h5,
     h6 {
-        @apply font-serif;
+        @apply font-serif text-pretty;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        animation-delay: -1ms;
+        animation-duration: 1ms;
+        animation-iteration-count: 1;
+        background-attachment: initial;
+        scroll-behavior: auto;
+        transition-duration: 1ms;
+        transition-delay: -1ms;
     }
 }

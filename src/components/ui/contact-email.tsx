@@ -32,6 +32,7 @@ export function ContactEmail() {
                 className={cn(
                     "group relative flex min-h-22 flex-3 items-center justify-between gap-6 overflow-hidden rounded-[2rem] border border-foreground/10 bg-foreground/2 px-8 py-5 transition-all hover:bg-foreground/4",
                 )}
+                aria-label={copied ? "Email copied" : "Copy email address"}
             >
                 <div className="flex flex-col items-start gap-1">
                     <span className="font-medium text-[0.65rem] text-foreground/30 uppercase tracking-[0.25em]">
@@ -55,6 +56,7 @@ export function ContactEmail() {
                                 animate={{ opacity: 1, scale: 1, rotate: 0 }}
                                 exit={{ opacity: 0, scale: 0.5 }}
                                 className="text-foreground"
+                                aria-live="polite"
                             >
                                 <IconCheck size={20} className="lg:size-6" />
                             </motion.div>
@@ -84,6 +86,7 @@ export function ContactEmail() {
                     href={`mailto:${CONTACT_EMAIL}`}
                     className="flex h-full min-h-22 w-full items-center justify-center rounded-[2rem] bg-foreground text-background transition-all hover:bg-foreground/90 active:scale-[0.98]"
                     title="Open in mail client"
+                    aria-label="Open email client"
                 >
                     <IconMail size={28} className="lg:size-10" />
                 </a>

@@ -1,3 +1,4 @@
+import { IconEdit, IconUpload } from "@tabler/icons-react";
 import { PROFILE_NAME, SITE_URL } from "@/lib/constants";
 
 export const revalidate = 86400; // 24 hours ISR
@@ -132,7 +133,13 @@ export default async function BlogsPage() {
                                         </h2>
                                         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-medium text-foreground/60 text-sm">
                                             <div className="flex items-center gap-1">
-                                                <span>Uploaded</span>
+                                                <span className="sr-only">
+                                                    Uploaded
+                                                </span>
+                                                <IconUpload
+                                                    size={16}
+                                                    aria-hidden="true"
+                                                />
                                                 <time
                                                     dateTime={
                                                         blog.date_uploaded
@@ -146,7 +153,13 @@ export default async function BlogsPage() {
                                             </div>
                                             <span>&bull;</span>
                                             <div className="flex items-center gap-1">
-                                                <span>Updated</span>
+                                                <span className="sr-only">
+                                                    Updated
+                                                </span>
+                                                <IconEdit
+                                                    size={16}
+                                                    aria-hidden="true"
+                                                />
                                                 <time
                                                     dateTime={blog.date_updated}
                                                     className="tabular-nums"

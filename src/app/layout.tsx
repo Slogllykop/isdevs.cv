@@ -76,6 +76,7 @@ export const metadata: Metadata = {
     },
 };
 
+import { AudioFeedback } from "@/components/audio-feedback";
 import { Cursor } from "@/components/cursor";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -164,6 +165,7 @@ export default function RootLayout({
                     enableSystem
                 >
                     <div className="pointer-events-none fixed inset-0 z-50 bg-[url('/paper-transparent.png')] bg-repeat opacity-50 mix-blend-multiply dark:opacity-0" />
+                    <AudioFeedback />
                     <Cursor />
                     <Header />
                     <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-12">

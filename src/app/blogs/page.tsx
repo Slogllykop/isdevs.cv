@@ -123,7 +123,7 @@ export default async function BlogsPage() {
                                 href={blog.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group block"
+                                className="blog-card group block"
                             >
                                 <article className="flex flex-col gap-2 border-foreground/10 border-b pb-8 last:border-0 last:pb-0">
                                     <div className="flex flex-col gap-2">

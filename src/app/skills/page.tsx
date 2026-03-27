@@ -143,7 +143,7 @@ export default function SkillsPage() {
                     {SKILLS.map((skill) => (
                         <div
                             key={skill.name}
-                            className="flex flex-col items-start gap-4 rounded-xl border border-foreground/10 bg-foreground/5 p-6 transition-all hover:border-foreground/20 hover:bg-foreground/10 hover:shadow-sm"
+                            className="skill-card flex flex-col items-start gap-4 rounded-xl border border-foreground/10 bg-foreground/5 p-6 transition-all hover:border-foreground/20 hover:bg-foreground/10 hover:shadow-sm"
                         >
                             <div className="text-foreground">
                                 {getIcon(skill.icon)}

@@ -87,7 +87,7 @@ export default function ProjectsPage() {
                     {PROJECTS.map((project) => (
                         <article
                             key={project.title}
-                            className="group flex flex-col gap-3 border-foreground/10 border-b pb-8 last:border-0 last:pb-0"
+                            className="project-card group flex flex-col gap-3 border-foreground/10 border-b pb-8 last:border-0 last:pb-0"
                         >
                             <div className="flex items-center justify-between gap-4">
                                 <h2 className="font-semibold font-serif text-xl sm:text-2xl">

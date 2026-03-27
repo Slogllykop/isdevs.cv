@@ -73,8 +73,8 @@ export const PROJECTS = [
 ];
 
 export const SKILLS = [
-    { name: "React", description: "UI Component Library", icon: "brand-react" },
     { name: "Next.js", description: "React Framework", icon: "brand-next-js" },
+    { name: "React", description: "UI Component Library", icon: "brand-react" },
     {
         name: "TypeScript",
         description: "Typed JavaScript",
@@ -86,9 +86,14 @@ export const SKILLS = [
         icon: "brand-tailwind",
     },
     {
-        name: "Supabase",
-        description: "Backend as a Service",
-        icon: "brand-supabase",
+        name: "TanStack Query",
+        description: "Asynchronous State Management",
+        icon: "brand-tanstack",
+    },
+    {
+        name: "Shadcn/UI",
+        description: "Accessible UI Components",
+        icon: "brand-shadcn",
     },
     {
         name: "Motion",
@@ -96,14 +101,39 @@ export const SKILLS = [
         icon: "brand-framer-motion",
     },
     {
+        name: "JavaScript",
+        description: "Core Language",
+        icon: "brand-javascript",
+    },
+    {
+        name: "HTML/CSS/SCSS",
+        description: "Web Fundamentals",
+        icon: "brand-html5",
+    },
+    {
+        name: "Redux",
+        description: "State Management",
+        icon: "brand-redux",
+    },
+    {
+        name: "Supabase",
+        description: "Backend as a Service",
+        icon: "brand-supabase",
+    },
+    {
         name: "PostgreSQL",
         description: "Relational Database",
         icon: "brand-postgresql",
     },
     {
-        name: "Git",
-        description: "Version Control",
-        icon: "brand-git",
+        name: "AI Agents",
+        description: "Antigravity, Claude, Cursor",
+        icon: "sparkles",
+    },
+    {
+        name: "Figma",
+        description: "Design Tool",
+        icon: "brand-figma",
     },
     {
         name: "Vercel",
@@ -111,9 +141,19 @@ export const SKILLS = [
         icon: "brand-vercel",
     },
     {
-        name: "C/C++",
-        description: "Systems Programming",
-        icon: "brand-cpp",
+        name: "Git",
+        description: "Version Control",
+        icon: "brand-git",
+    },
+    {
+        name: "GitHub",
+        description: "Collaboration",
+        icon: "brand-github",
+    },
+    {
+        name: "Docker",
+        description: "Containerization",
+        icon: "brand-docker",
     },
     {
         name: "Python",
@@ -121,13 +161,15 @@ export const SKILLS = [
         icon: "brand-python",
     },
     {
-        name: "AI Agents",
-        description: "Antigravity, Claude, Cursor",
-        icon: "sparkles",
+        name: "C/C++",
+        description: "Systems Programming",
+        icon: "brand-cpp",
     },
 ];
 
 export const CONTACT_EMAIL = "to@isdevs.cv";
+
+export const SITE_URL = "https://www.isdevs.cv";
 
 export const SOCIAL_LINKS = [
     {

@@ -1,5 +1,6 @@
 "use client";
 
+import { IconFileText } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import {
@@ -56,7 +57,7 @@ const Polaroid = () => {
 
 export const Hero = () => {
     return (
-        <section className="grid grid-cols-1 gap-12 py-20 md:grid-cols-5 md:items-center">
+        <section className="grid grid-cols-1 gap-12 pt-4 pb-20 md:grid-cols-5 md:items-center md:py-20">
             <div className="flex flex-col gap-8 md:col-span-3">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -70,6 +71,22 @@ export const Hero = () => {
                     <p className="max-w-lg font-medium text-foreground/80 text-lg leading-relaxed sm:text-xl">
                         {GREETING}
                     </p>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        <a
+                            href="/resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 rounded-lg border border-foreground/15 px-5 py-2.5 font-medium text-foreground/70 text-sm transition-all hover:border-foreground/30 hover:bg-foreground/5 hover:text-foreground"
+                        >
+                            <IconFileText size={16} stroke={2} />
+                            View Resume
+                        </a>
+                    </motion.div>
                 </motion.div>
 
                 <motion.div
@@ -78,7 +95,7 @@ export const Hero = () => {
                     transition={{ delay: 0.3, duration: 0.5 }}
                     className="flex flex-col gap-8"
                 >
-                    <div className="h-1 w-12 bg-foreground/15" />
+                    <div className="h-[3px] w-12 bg-foreground/15" />
                     <div className="flex flex-col gap-4">
                         <span className="font-bold text-sm tracking-tight">
                             Find me on

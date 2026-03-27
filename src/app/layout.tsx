@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Lora, Open_Sans } from "next/font/google";
+import { Lora, Open_Sans } from "next/font/google";
+import { PROFILE_NAME, SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
 const lora = Lora({
@@ -15,8 +16,64 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-    title: "Indraneel Sinare - Portfolio",
-    description: "Personal portfolio website of Indraneel Sinare",
+    metadataBase: new URL(SITE_URL),
+    title: {
+        default: `${PROFILE_NAME} - Frontend Engineer & Full Stack Developer`,
+        template: `%s | ${PROFILE_NAME}`,
+    },
+    description: `${PROFILE_NAME} is a results-driven Frontend Engineer specializing in React, Next.js, and TypeScript. Building high-quality, performant web applications with clean, scalable code. Based in Pune, India.`,
+    keywords: [
+        PROFILE_NAME,
+        "Frontend Engineer",
+        "Full Stack Developer",
+        "React Developer",
+        "Next.js Developer",
+        "TypeScript",
+        "Web Developer Pune",
+        "Portfolio",
+        "Software Engineer",
+        "JavaScript Developer",
+    ],
+    authors: [{ name: PROFILE_NAME, url: SITE_URL }],
+    creator: PROFILE_NAME,
+    openGraph: {
+        type: "website",
+        locale: "en_US",
+        url: SITE_URL,
+        siteName: PROFILE_NAME,
+        title: `${PROFILE_NAME} - Frontend Engineer & Full Stack Developer`,
+        description:
+            "Results-driven Frontend Engineer specializing in React, Next.js, and TypeScript. Building high-quality, performant web applications.",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: `${PROFILE_NAME} - Frontend Engineer & Full Stack Developer`,
+        description:
+            "Results-driven Frontend Engineer specializing in React, Next.js, and TypeScript. Building high-quality, performant web applications.",
+    },
+    icons: {
+        icon: [
+            { url: "/icon.png", sizes: "16x16", type: "image/png" },
+            { url: "/icon.png", sizes: "32x32", type: "image/png" },
+            { url: "/icon.png", sizes: "96x96", type: "image/png" },
+            { url: "/icon.png", sizes: "192x192", type: "image/png" },
+        ],
+        apple: [
+            { url: "/apple-icon.png", sizes: "57x57", type: "image/png" },
+            { url: "/apple-icon.png", sizes: "60x60", type: "image/png" },
+            { url: "/apple-icon.png", sizes: "72x72", type: "image/png" },
+            { url: "/apple-icon.png", sizes: "76x76", type: "image/png" },
+            { url: "/apple-icon.png", sizes: "114x114", type: "image/png" },
+            { url: "/apple-icon.png", sizes: "120x120", type: "image/png" },
+            { url: "/apple-icon.png", sizes: "144x144", type: "image/png" },
+            { url: "/apple-icon.png", sizes: "152x152", type: "image/png" },
+            { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+        ],
+        shortcut: "/favicon.ico",
+    },
+    alternates: {
+        canonical: SITE_URL,
+    },
 };
 
 import { Cursor } from "@/components/cursor";
@@ -25,7 +82,61 @@ import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+function JsonLd() {
+    const schema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": `${SITE_URL}/#website`,
+                url: SITE_URL,
+                name: PROFILE_NAME,
+                description: `Personal portfolio of ${PROFILE_NAME} - Frontend Engineer & Full Stack Developer`,
+                publisher: { "@id": `${SITE_URL}/#person` },
+            },
+            {
+                "@type": "Person",
+                "@id": `${SITE_URL}/#person`,
+                name: PROFILE_NAME,
+                url: SITE_URL,
+                jobTitle: "Frontend Engineer",
+                description:
+                    "Results-driven Frontend Engineer with experience in developing high-quality web applications utilizing JavaScript/TypeScript and frameworks such as React and Next.js.",
+                address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Pune",
+                    addressCountry: "IN",
+                },
+                sameAs: [
+                    "https://www.linkedin.com/in/indraneel-sinare",
+                    "https://github.com/Slogllykop",
+                ],
+                knowsAbout: [
+                    "React",
+                    "Next.js",
+                    "TypeScript",
+                    "JavaScript",
+                    "Tailwind CSS",
+                    "Node.js",
+                    "PostgreSQL",
+                    "Supabase",
+                    "Git",
+                    "Docker",
+                    "Frontend Development",
+                    "Full Stack Development",
+                ],
+            },
+        ],
+    };
+
+    return (
+        <script
+            type="application/ld+json"
+            // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD requires dangerouslySetInnerHTML
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+    );
+}
 
 export default function RootLayout({
     children,
@@ -40,12 +151,13 @@ export default function RootLayout({
                 "antialiased",
                 lora.variable,
                 openSans.variable,
-                "font-sans",
-                inter.variable,
             )}
             suppressHydrationWarning
         >
-            <body className="relative flex min-h-dvh flex-col font-sans">
+            <head>
+                <JsonLd />
+            </head>
+            <body className="relative flex min-h-dvh flex-col font-open-sans">
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"

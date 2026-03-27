@@ -5,10 +5,11 @@ import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { CONTACT_EMAIL, NAV_LINKS } from "@/lib/constants";
+import { CONTACT_EMAIL, NAV_LINKS, PROFILE_NAME } from "@/lib/constants";
 import { ThemeToggleButton } from "./ui/skiper-ui/skiper26";
 
 export function Header() {
+    const firstName = PROFILE_NAME.split(" ")[0];
     const [isScrolled, setIsScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
@@ -52,7 +53,7 @@ export function Header() {
                     href="/"
                     className="group relative z-50 font-medium font-serif text-xl tracking-tight transition-opacity hover:opacity-80 md:text-2xl"
                 >
-                    Indraneel.
+                    {firstName}.
                     <motion.div
                         className="-bottom-1 absolute left-0 h-[2px] w-0 bg-foreground transition-all duration-300 group-hover:w-full"
                         initial={false}

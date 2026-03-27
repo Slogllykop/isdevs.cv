@@ -1,11 +1,11 @@
-import { CONTACT_EMAIL } from "@/lib/constants";
+import { CONTACT_EMAIL, PROFILE_NAME } from "@/lib/constants";
 
 export function Footer() {
     return (
         <footer className="mt-auto py-8">
             <div className="mx-auto flex max-w-4xl flex-col items-center justify-between gap-4 px-6 sm:flex-row">
                 <p className="text-foreground/50 text-sm">
-                    © {new Date().getFullYear()} Indraneel Sinare. All rights
+                    © {new Date().getFullYear()} {PROFILE_NAME}. All rights
                     reserved.
                 </p>
                 <a

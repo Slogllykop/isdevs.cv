@@ -4,9 +4,7 @@ import {
     IconBrandFigma,
     IconBrandFramerMotion,
     IconBrandGit,
-    IconBrandGithub,
     IconBrandHtml5,
-    IconBrandJavascript,
     IconBrandNextjs,
     IconBrandPython,
     IconBrandReact,
@@ -14,11 +12,9 @@ import {
     IconBrandSupabase,
     IconBrandTailwind,
     IconBrandTypescript,
-    IconBrandVercel,
     IconDatabase,
     IconRefresh,
     IconSparkles,
-    IconStack2,
 } from "@tabler/icons-react";
 import { PROFILE_NAME, SITE_URL, SKILLS } from "@/lib/constants";
 
@@ -35,8 +31,6 @@ const getIcon = (name: string) => {
             return <IconBrandNextjs size={24} stroke={1.5} />;
         case "brand-typescript":
             return <IconBrandTypescript size={24} stroke={1.5} />;
-        case "brand-javascript":
-            return <IconBrandJavascript size={24} stroke={1.5} />;
         case "brand-tailwind":
             return <IconBrandTailwind size={24} stroke={1.5} />;
         case "brand-html5":
@@ -49,18 +43,12 @@ const getIcon = (name: string) => {
             return <IconBrandFramerMotion size={24} stroke={1.5} />;
         case "brand-postgresql":
             return <IconDatabase size={24} stroke={1.5} />;
-        case "brand-shadcn":
-            return <IconStack2 size={24} stroke={1.5} />;
         case "brand-docker":
             return <IconBrandDocker size={24} stroke={1.5} />;
         case "brand-git":
             return <IconBrandGit size={24} stroke={1.5} />;
-        case "brand-github":
-            return <IconBrandGithub size={24} stroke={1.5} />;
         case "brand-supabase":
             return <IconBrandSupabase size={24} stroke={1.5} />;
-        case "brand-vercel":
-            return <IconBrandVercel size={24} stroke={1.5} />;
         case "brand-figma":
             return <IconBrandFigma size={24} stroke={1.5} />;
         case "brand-cpp":

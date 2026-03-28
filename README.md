@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# isdevs.cv | Personal Portfolio
 
-## Getting Started
+A professional, state-of-the-art portfolio website for **Indraneel Sinare**, architected with a focus on performance, scalability, and premium aesthetics. This repository serves as a showcase of advanced frontend engineering practices using the latest React and Next.js ecosystem.
 
-First, run the development server:
+## 🛠️ Technology Stack
+
+This project is built using a bleeding-edge stack to ensure maximum efficiency and a superior developer experience:
+
+- **Core**: [Next.js 16 (App Router)](https://nextjs.org), [TypeScript](https://www.typescriptlang.org), [React 19 (React Compiler)](https://react.dev).
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com) utilizing inline `@theme` directives and **OKLCH** color syntax.
+- **Typography**: [Google Fonts](https://fonts.google.com) (**Lora** for headings, **Open Sans** for body text).
+- **Icons**: [Tabler Icons](https://tabler.io/icons) (`@tabler/icons-react`).
+- **Animation**: [Framer Motion](https://motion.dev) (`motion/react`) for fluid micro-interactions.
+- **Linting & Formatting**: [Biome.js](https://biomejs.dev) for strict, high-performance code quality checks.
+- **Package Manager**: [pnpm](https://pnpm.io).
+
+## 🎨 Design Philosophy
+
+Inspired by minimalist and high-end digital agency aesthetics:
+
+- **Monochrome Elegance**: A strict monochrome color palette using `oklch` for precise color control.
+- **Subtle Texture**: A light theme featuring a paper grain overlay (`/public/paper-transparent.png`) for a premium, tactile feel.
+- **Dynamic Interactions**: Graceful transitions using the View Transitions API and Framer Motion, including a custom cursor dot and radial mask theme toggling.
+- **Responsive & Lightweight**: Optimized for all viewports using `rem`/`em` units and `dvh` for layout consistency.
+
+## 🏗️ Architecture & Data Standards
+
+- **React Server Components (RSC)**: Prioritizing server-side rendering to push client-side boundaries to the edges.
+- **Single Source of Truth**: All static data (projects, work history, skills, contact info) is centralized in `src/lib/constants.ts` for ease of maintenance.
+- **Incremental Static Regeneration (ISR)**: The `/blogs` route utilizes high-performance caching and revalidation.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (Late LTS)
+- pnpm installed globally
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Slogllykop/isdevs.cv.git
+   ```
+2. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+3. Run the development server:
+   ```bash
+   pnpm dev
+   ```
+
+### Code Quality & Formatting
+
+This project enforces strict linting and formatting via Biome. Before committing, ensure your code matches the project standards:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm lint
+pnpm format
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🏗️ Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `src/app/`: Next.js App Router pages and layouts.
+- `src/components/`: Reusable, atomic UI components.
+- `src/lib/`: Utility functions and the `constants.ts` data file.
+- `public/`: Static assets including the signature paper grain overlay.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with precision by [Indraneel Sinare](https://www.isdevs.cv)

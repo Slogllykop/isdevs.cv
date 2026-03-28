@@ -29,7 +29,7 @@ export const EXPERIENCES = [
         date: "Feb 2024 - Aug 2024",
         description: [
             "Engineered the official company website with Next.js, implementing advanced SEO strategies, performance-first architecture, and comprehensive accessibility standards.",
-            "Architected and scaffolded Docizmo, an enterprise-grade collaborative diagramming platform and text editor designed as a robust web application to Lucidchart.",
+            "Architected and scaffolded Docizmo, an enterprise-grade collaborative diagramming platform and text editor designed as a robust web application like Lucidchart.",
             "Developed VSA (Very Simple Annotator), a specialized utility for high-precision image annotation and visual feedback workflows.",
         ],
     },

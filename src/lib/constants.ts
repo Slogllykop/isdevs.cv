@@ -91,9 +91,9 @@ export const SKILLS = [
         icon: "brand-tanstack",
     },
     {
-        name: "Shadcn/UI",
-        description: "Accessible UI Components",
-        icon: "brand-shadcn",
+        name: "Redux",
+        description: "State Management",
+        icon: "brand-redux",
     },
     {
         name: "Motion",
@@ -101,9 +101,9 @@ export const SKILLS = [
         icon: "brand-framer-motion",
     },
     {
-        name: "JavaScript",
-        description: "Core Language",
-        icon: "brand-javascript",
+        name: "PostgreSQL",
+        description: "Relational Database",
+        icon: "brand-postgresql",
     },
     {
         name: "HTML/CSS/SCSS",
@@ -111,19 +111,9 @@ export const SKILLS = [
         icon: "brand-html5",
     },
     {
-        name: "Redux",
-        description: "State Management",
-        icon: "brand-redux",
-    },
-    {
         name: "Supabase",
         description: "Backend as a Service",
         icon: "brand-supabase",
-    },
-    {
-        name: "PostgreSQL",
-        description: "Relational Database",
-        icon: "brand-postgresql",
     },
     {
         name: "AI Agents",
@@ -136,19 +126,9 @@ export const SKILLS = [
         icon: "brand-figma",
     },
     {
-        name: "Vercel",
-        description: "Deployment Platform",
-        icon: "brand-vercel",
-    },
-    {
         name: "Git",
         description: "Version Control",
         icon: "brand-git",
-    },
-    {
-        name: "GitHub",
-        description: "Collaboration",
-        icon: "brand-github",
     },
     {
         name: "Docker",

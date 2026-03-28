@@ -56,7 +56,7 @@ export function AudioFeedback() {
         const handleInteraction = (e: Event) => {
             // Find the closest interactive ancestor
             const target = (e.target as HTMLElement).closest(
-                'a:not(.blog-card):not(.project-card), button, [role="button"], .group:not(.blog-card):not(.project-card), .bg-card, .skill-card, input, select, textarea',
+                'a:not(.blog-card):not(.project-card), button, [role="button"], .group:not(.blog-card):not(.project-card):not(.bg-card), .skill-card, input, select, textarea',
             ) as HTMLElement;
 
             // Only play if we've entered a new interactive element and it's not the same as before

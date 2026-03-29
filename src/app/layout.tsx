@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Lora, Open_Sans } from "next/font/google";
-import { PROFILE_NAME, SITE_URL } from "@/lib/constants";
+import { CONTACT_EMAIL, PROFILE_NAME, SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
 const lora = Lora({
@@ -23,6 +23,8 @@ export const metadata: Metadata = {
     },
     description: `${PROFILE_NAME} is a results-driven Frontend Engineer specializing in React, Next.js, and TypeScript. Building high-quality, performant web applications with clean, scalable code. Based in Pune, India.`,
     keywords: [
+        "isdevs.cv",
+        "isdevs",
         PROFILE_NAME,
         "Frontend Engineer",
         "Full Stack Developer",
@@ -92,6 +94,7 @@ function JsonLd() {
                 "@id": `${SITE_URL}/#website`,
                 url: SITE_URL,
                 name: PROFILE_NAME,
+                alternateName: CONTACT_EMAIL.split("@")[1],
                 description: `Personal portfolio of ${PROFILE_NAME} - Frontend Engineer & Full Stack Developer`,
                 publisher: { "@id": `${SITE_URL}/#person` },
             },
@@ -125,6 +128,50 @@ function JsonLd() {
                     "Docker",
                     "Frontend Development",
                     "Full Stack Development",
+                ],
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "@id": `${SITE_URL}/#navigation`,
+                name: "Primary Navigation",
+                url: SITE_URL,
+                hasPart: [
+                    {
+                        "@type": "WebPage",
+                        "@id": `${SITE_URL}/#home`,
+                        name: "Home",
+                        url: SITE_URL,
+                    },
+                    {
+                        "@type": "WebPage",
+                        "@id": `${SITE_URL}/projects/#webpage`,
+                        name: "Projects",
+                        url: `${SITE_URL}/projects`,
+                    },
+                    {
+                        "@type": "WebPage",
+                        "@id": `${SITE_URL}/jobs/#webpage`,
+                        name: "Work History",
+                        url: `${SITE_URL}/jobs`,
+                    },
+                    {
+                        "@type": "WebPage",
+                        "@id": `${SITE_URL}/skills/#webpage`,
+                        name: "Skills",
+                        url: `${SITE_URL}/skills`,
+                    },
+                    {
+                        "@type": "WebPage",
+                        "@id": `${SITE_URL}/blogs/#webpage`,
+                        name: "Blogs",
+                        url: `${SITE_URL}/blogs`,
+                    },
+                    {
+                        "@type": "WebPage",
+                        "@id": `${SITE_URL}/contact/#webpage`,
+                        name: "Contact",
+                        url: `${SITE_URL}/contact`,
+                    },
                 ],
             },
         ],

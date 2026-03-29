@@ -10,7 +10,7 @@ export const NAV_LINKS = [
 ];
 
 export const GREETING =
-    "Results-driven Frontend Engineer with around 1 year of experience in developing high-quality web applications utilizing JavaScript/TypeScript and frameworks such as React and NextJS. Dedicated to producing clean, efficient, and maintainable code while ensuring outstanding user experiences.";
+    "Results-driven Frontend Engineer with more than 1 year of experience in developing high-quality web applications utilizing JavaScript/TypeScript and frameworks such as React and NextJS. Dedicated to producing clean, efficient, and maintainable code while ensuring outstanding user experiences.";
 
 export const EXPERIENCES = [
     {

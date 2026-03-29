@@ -21,7 +21,7 @@ export function JobsTimeline() {
                     className="relative flex flex-col gap-4"
                 >
                     {/* Timeline dot */}
-                    <div className="-left-[45px] sm:-left-[53px] absolute top-0 flex size-10 items-center justify-center rounded-full border border-foreground/10 bg-background shadow-sm">
+                    <div className="-left-11.25 sm:-left-13.25 absolute top-0 flex size-10 items-center justify-center rounded-full border border-foreground/10 bg-background shadow-sm">
                         <TimelineIndicator />
                     </div>
 

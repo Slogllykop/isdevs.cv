@@ -73,7 +73,7 @@ export function Header() {
                 >
                     {firstName}.
                     <motion.div
-                        className="-bottom-1 absolute left-0 h-[2px] w-0 bg-foreground transition-all duration-300 group-hover:w-full"
+                        className="-bottom-1 absolute left-0 h-0.5 w-0 bg-foreground transition-all duration-300 group-hover:w-full"
                         initial={false}
                     />
                 </Link>
@@ -94,7 +94,7 @@ export function Header() {
                             {pathname === link.href && (
                                 <motion.div
                                     layoutId="nav-underline"
-                                    className="-bottom-1 absolute left-0 h-px w-full bg-foreground"
+                                    className="-bottom-1 absolute left-0 h-0.25 w-full bg-foreground"
                                     transition={{
                                         type: "spring",
                                         stiffness: 380,
@@ -127,7 +127,7 @@ export function Header() {
                                     exit={{ opacity: 0, rotate: 90 }}
                                     transition={{ duration: 0.2 }}
                                 >
-                                    <IconX size={20} />
+                                    <IconX size="1.25rem" />
                                 </motion.div>
                             ) : (
                                 <motion.div
@@ -137,7 +137,7 @@ export function Header() {
                                     exit={{ opacity: 0, rotate: -90 }}
                                     transition={{ duration: 0.2 }}
                                 >
-                                    <IconMenu2 size={20} />
+                                    <IconMenu2 size="1.25rem" />
                                 </motion.div>
                             )}
                         </AnimatePresence>

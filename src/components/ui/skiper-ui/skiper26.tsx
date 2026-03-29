@@ -184,7 +184,11 @@ export const ThemeToggleButton = ({
                     transition={{ duration: 0.3, ease: "backOut" }}
                     className="flex items-center justify-center font-medium"
                 >
-                    {isDark ? <IconSun size={20} /> : <IconMoon size={20} />}
+                    {isDark ? (
+                        <IconSun size="1.25rem" />
+                    ) : (
+                        <IconMoon size="1.25rem" />
+                    )}
                 </motion.div>
             </AnimatePresence>
         </button>
@@ -367,7 +371,7 @@ export const createAnimation = (
             
       ::view-transition-new(root) {
         animation-name: reveal-light-${start}${blur ? "-blur" : ""};
-        ${blur ? "filter: blur(2px);" : ""}
+        ${blur ? "filter: blur(0.125rem);" : ""}
       }
 
       ::view-transition-old(root),
@@ -377,30 +381,30 @@ export const createAnimation = (
       }
       .dark::view-transition-new(root) {
         animation-name: reveal-dark-${start}${blur ? "-blur" : ""};
-        ${blur ? "filter: blur(2px);" : ""}
+        ${blur ? "filter: blur(0.125rem);" : ""}
       }
 
       @keyframes reveal-dark-${start}${blur ? "-blur" : ""} {
         from {
           clip-path: ${clipPath.from};
-          ${blur ? "filter: blur(8px);" : ""}
+          ${blur ? "filter: blur(0.5rem);" : ""}
         }
-        ${blur ? "50% { filter: blur(4px); }" : ""}
+        ${blur ? "50% { filter: blur(0.25rem); }" : ""}
         to {
           clip-path: ${clipPath.to};
-          ${blur ? "filter: blur(0px);" : ""}
+          ${blur ? "filter: blur(0rem);" : ""}
         }
       }
 
       @keyframes reveal-light-${start}${blur ? "-blur" : ""} {
         from {
           clip-path: ${clipPath.from};
-          ${blur ? "filter: blur(8px);" : ""}
+          ${blur ? "filter: blur(0.5rem);" : ""}
         }
-        ${blur ? "50% { filter: blur(4px); }" : ""}
+        ${blur ? "50% { filter: blur(0.25rem); }" : ""}
         to {
           clip-path: ${clipPath.to};
-          ${blur ? "filter: blur(0px);" : ""}
+          ${blur ? "filter: blur(0rem);" : ""}
         }
       }
       `,
@@ -417,7 +421,7 @@ export const createAnimation = (
             
       ::view-transition-new(root) {
         animation-name: reveal-light${blur ? "-blur" : ""};
-        ${blur ? "filter: blur(2px);" : ""}
+        ${blur ? "filter: blur(0.125rem);" : ""}
       }
 
       ::view-transition-old(root),
@@ -427,30 +431,30 @@ export const createAnimation = (
       }
       .dark::view-transition-new(root) {
         animation-name: reveal-dark${blur ? "-blur" : ""};
-        ${blur ? "filter: blur(2px);" : ""}
+        ${blur ? "filter: blur(0.125rem);" : ""}
       }
 
       @keyframes reveal-dark${blur ? "-blur" : ""} {
         from {
           clip-path: circle(0% at 50% 50%);
-          ${blur ? "filter: blur(8px);" : ""}
+          ${blur ? "filter: blur(0.5rem);" : ""}
         }
-        ${blur ? "50% { filter: blur(4px); }" : ""}
+        ${blur ? "50% { filter: blur(0.25rem); }" : ""}
         to {
           clip-path: circle(100.0% at 50% 50%);
-          ${blur ? "filter: blur(0px);" : ""}
+          ${blur ? "filter: blur(0rem);" : ""}
         }
       }
 
       @keyframes reveal-light${blur ? "-blur" : ""} {
         from {
            clip-path: circle(0% at 50% 50%);
-           ${blur ? "filter: blur(8px);" : ""}
+           ${blur ? "filter: blur(0.5rem);" : ""}
         }
-        ${blur ? "50% { filter: blur(4px); }" : ""}
+        ${blur ? "50% { filter: blur(0.25rem); }" : ""}
         to {
           clip-path: circle(100.0% at 50% 50%);
-          ${blur ? "filter: blur(0px);" : ""}
+          ${blur ? "filter: blur(0rem);" : ""}
         }
       }
       `,
@@ -602,7 +606,7 @@ export const createAnimation = (
             
       ::view-transition-new(root) {
         animation-name: reveal-light-${start}${blur ? "-blur" : ""};
-        ${blur ? "filter: blur(2px);" : ""}
+        ${blur ? "filter: blur(0.125rem);" : ""}
       }
 
       ::view-transition-old(root),
@@ -612,30 +616,30 @@ export const createAnimation = (
       }
       .dark::view-transition-new(root) {
         animation-name: reveal-dark-${start}${blur ? "-blur" : ""};
-        ${blur ? "filter: blur(2px);" : ""}
+        ${blur ? "filter: blur(0.125rem);" : ""}
       }
 
       @keyframes reveal-dark-${start}${blur ? "-blur" : ""} {
         from {
           clip-path: ${clipPaths.darkFrom};
-          ${blur ? "filter: blur(8px);" : ""}
+          ${blur ? "filter: blur(0.5rem);" : ""}
         }
-        ${blur ? "50% { filter: blur(4px); }" : ""}
+        ${blur ? "50% { filter: blur(0.25rem); }" : ""}
         to {
           clip-path: ${clipPaths.darkTo};
-          ${blur ? "filter: blur(0px);" : ""}
+          ${blur ? "filter: blur(0rem);" : ""}
         }
       }
 
       @keyframes reveal-light-${start}${blur ? "-blur" : ""} {
         from {
           clip-path: ${clipPaths.lightFrom};
-          ${blur ? "filter: blur(8px);" : ""}
+          ${blur ? "filter: blur(0.5rem);" : ""}
         }
-        ${blur ? "50% { filter: blur(4px); }" : ""}
+        ${blur ? "50% { filter: blur(0.25rem); }" : ""}
         to {
           clip-path: ${clipPaths.lightTo};
-          ${blur ? "filter: blur(0px);" : ""}
+          ${blur ? "filter: blur(0rem);" : ""}
         }
       }
       `,
@@ -675,7 +679,7 @@ export const createAnimation = (
             
       ::view-transition-new(root) {
         animation-name: reveal-light-${start}${blur ? "-blur" : ""};
-        ${blur ? "filter: blur(2px);" : ""}
+        ${blur ? "filter: blur(0.125rem);" : ""}
       }
 
       ::view-transition-old(root),
@@ -685,30 +689,30 @@ export const createAnimation = (
       }
       .dark::view-transition-new(root) {
         animation-name: reveal-dark-${start}${blur ? "-blur" : ""};
-        ${blur ? "filter: blur(2px);" : ""}
+        ${blur ? "filter: blur(0.125rem);" : ""}
       }
 
       @keyframes reveal-dark-${start}${blur ? "-blur" : ""} {
         from {
           clip-path: circle(0% at ${clipPosition});
-          ${blur ? "filter: blur(8px);" : ""}
+          ${blur ? "filter: blur(0.5rem);" : ""}
         }
-        ${blur ? "50% { filter: blur(4px); }" : ""}
+        ${blur ? "50% { filter: blur(0.25rem); }" : ""}
         to {
           clip-path: circle(150.0% at ${clipPosition});
-          ${blur ? "filter: blur(0px);" : ""}
+          ${blur ? "filter: blur(0rem);" : ""}
         }
       }
 
       @keyframes reveal-light-${start}${blur ? "-blur" : ""} {
         from {
            clip-path: circle(0% at ${clipPosition});
-           ${blur ? "filter: blur(8px);" : ""}
+           ${blur ? "filter: blur(0.5rem);" : ""}
         }
-        ${blur ? "50% { filter: blur(4px); }" : ""}
+        ${blur ? "50% { filter: blur(0.25rem); }" : ""}
         to {
           clip-path: circle(150.0% at ${clipPosition});
-          ${blur ? "filter: blur(0px);" : ""}
+          ${blur ? "filter: blur(0rem);" : ""}
         }
       }
       `,
@@ -726,7 +730,7 @@ export const createAnimation = (
         mask-origin: content-box;
         animation: scale-${start}${blur ? "-blur" : ""} 1s;
         transform-origin: ${transformOrigin};
-        ${blur ? "filter: blur(2px);" : ""}
+        ${blur ? "filter: blur(0.125rem);" : ""}
       }
       ::view-transition-old(root),
       .dark::view-transition-old(root) {
@@ -736,12 +740,12 @@ export const createAnimation = (
       }
       @keyframes scale-${start}${blur ? "-blur" : ""} {
         from {
-          ${blur ? "filter: blur(8px);" : ""}
+          ${blur ? "filter: blur(0.5rem);" : ""}
         }
-        ${blur ? "50% { filter: blur(4px); }" : ""}
+        ${blur ? "50% { filter: blur(0.25rem); }" : ""}
         to {
           mask-size: 2000vmax;
-          ${blur ? "filter: blur(0px);" : ""}
+          ${blur ? "filter: blur(0rem);" : ""}
         }
       }
     `,

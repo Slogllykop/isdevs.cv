@@ -11,7 +11,7 @@ import {
 } from "@/lib/constants";
 
 const Tape = () => (
-    <div className="-rotate-2 -translate-x-1/2 -translate-y-1/2 absolute top-0 left-1/2 z-10 h-10 w-28 rounded-sm bg-foreground/15 shadow-sm backdrop-blur-[2px] transition-all duration-500 before:absolute before:inset-0 before:bg-linear-to-r before:from-transparent before:via-white/5 before:to-transparent" />
+    <div className="-rotate-2 -translate-x-1/2 -translate-y-1/2 absolute top-0 left-1/2 z-10 h-10 w-28 rounded-sm bg-foreground/15 shadow-sm backdrop-blur-[0.125rem] transition-all duration-500 before:absolute before:inset-0 before:bg-linear-to-r before:from-transparent before:via-white/5 before:to-transparent" />
 );
 
 const Polaroid = () => {
@@ -21,29 +21,29 @@ const Polaroid = () => {
                 rotate: -3,
                 y: 20,
                 opacity: 0,
-                boxShadow: "0 20px 50px rgba(0,0,0,0.1)",
+                boxShadow: "0 1.25rem 3.125rem rgba(0,0,0,0.1)",
             }}
             animate={{
                 rotate: -2,
                 y: 0,
                 opacity: 1,
-                boxShadow: "0 20px 50px rgba(0,0,0,0.1)",
+                boxShadow: "0 1.25rem 3.125rem rgba(0,0,0,0.1)",
             }}
             whileHover={{
                 rotate: 0,
-                boxShadow: "0 40px 80px rgba(0,0,0,0.15)",
+                boxShadow: "0 2.5rem 5rem rgba(0,0,0,0.15)",
                 transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
             }}
             transition={{ duration: 0.5 }}
-            className="group relative flex flex-col items-center bg-card p-4 pb-14 ring-1 ring-border/20 dark:shadow-[0_0_40px_rgba(0,0,0,0.4)] dark:ring-white/5"
+            className="group relative flex flex-col items-center bg-card p-4 pb-14 ring-1 ring-border/20 dark:shadow-[0_0_2.5rem_rgba(0,0,0,0.4)] dark:ring-white/5"
         >
             <Tape />
-            <div className="relative h-[346px] w-[276px] overflow-hidden border border-foreground/10 bg-muted grayscale transition-all duration-700 group-hover:grayscale-0">
+            <div className="relative h-86.5 w-69 overflow-hidden border border-foreground/10 bg-muted grayscale transition-all duration-700 group-hover:grayscale-0">
                 <Image
                     src={PROFILE_IMAGE}
                     alt={PROFILE_NAME}
                     fill
-                    sizes="276px"
+                    sizes="17.25rem"
                     className="object-cover transition-transform duration-700"
                     priority
                 />
@@ -95,7 +95,7 @@ export const Hero = () => {
                     transition={{ delay: 0.3, duration: 0.5 }}
                     className="flex flex-col gap-8"
                 >
-                    <div className="h-[3px] w-12 bg-foreground/15" />
+                    <div className="h-0.75 w-12 bg-foreground/15" />
                     <div className="flex flex-col gap-4">
                         <span className="font-bold text-sm tracking-tight">
                             Find me on
@@ -117,7 +117,7 @@ export const Hero = () => {
                 </motion.div>
             </div>
 
-            <div className="relative mx-auto hidden w-full max-w-[280px] md:col-span-2 md:block md:max-w-none">
+            <div className="relative mx-auto hidden w-full max-w-70 md:col-span-2 md:block md:max-w-none">
                 <Polaroid />
             </div>
         </section>

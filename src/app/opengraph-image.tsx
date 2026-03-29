@@ -20,7 +20,7 @@ export default function Image() {
                 justifyContent: "center",
                 alignItems: "flex-start",
                 backgroundColor: "#0a0a0a",
-                padding: "80px",
+                padding: "5rem",
                 fontFamily: "system-ui, sans-serif",
             }}
         >
@@ -28,15 +28,15 @@ export default function Image() {
                 style={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: "16px",
+                    gap: "1rem",
                 }}
             >
                 <span
                     style={{
-                        fontSize: "20px",
+                        fontSize: "1.25rem",
                         fontWeight: 500,
                         color: "#666",
-                        letterSpacing: "4px",
+                        letterSpacing: "0.25rem",
                         textTransform: "uppercase",
                     }}
                 >
@@ -44,23 +44,23 @@ export default function Image() {
                 </span>
                 <h1
                     style={{
-                        fontSize: "72px",
+                        fontSize: "4.5rem",
                         fontWeight: 700,
                         color: "#fafafa",
                         lineHeight: 1.1,
                         margin: 0,
-                        letterSpacing: "-2px",
+                        letterSpacing: "-0.125rem",
                     }}
                 >
                     {PROFILE_NAME}
                 </h1>
                 <p
                     style={{
-                        fontSize: "28px",
+                        fontSize: "1.75rem",
                         fontWeight: 400,
                         color: "#888",
                         margin: 0,
-                        marginTop: "8px",
+                        marginTop: "0.5rem",
                     }}
                 >
                     Frontend Engineer
@@ -71,15 +71,15 @@ export default function Image() {
                 style={{
                     display: "flex",
                     position: "absolute",
-                    bottom: "80px",
-                    left: "80px",
-                    gap: "24px",
+                    bottom: "5rem",
+                    left: "5rem",
+                    gap: "1.5rem",
                     alignItems: "center",
                 }}
             >
                 <span
                     style={{
-                        fontSize: "18px",
+                        fontSize: "1.125rem",
                         color: "#555",
                         fontWeight: 400,
                     }}
@@ -88,15 +88,15 @@ export default function Image() {
                 </span>
                 <div
                     style={{
-                        width: "4px",
-                        height: "4px",
+                        width: "0.25rem",
+                        height: "0.25rem",
                         borderRadius: "50%",
                         backgroundColor: "#333",
                     }}
                 />
                 <span
                     style={{
-                        fontSize: "18px",
+                        fontSize: "1.125rem",
                         color: "#555",
                         fontWeight: 400,
                     }}
@@ -110,21 +110,21 @@ export default function Image() {
                 style={{
                     display: "flex",
                     position: "absolute",
-                    top: "40px",
-                    right: "40px",
+                    top: "2.5rem",
+                    right: "2.5rem",
                     flexDirection: "column",
-                    gap: "12px",
+                    gap: "0.75rem",
                 }}
             >
                 {[0, 1, 2, 3, 4].map((row) => (
-                    <div key={row} style={{ display: "flex", gap: "12px" }}>
+                    <div key={row} style={{ display: "flex", gap: "0.75rem" }}>
                         {[0, 1, 2, 3, 4].map((col) => (
                             <div
                                 key={col}
                                 style={{
-                                    width: "3px",
-                                    height: "3px",
-                                    borderRadius: "1px",
+                                    width: "0.1875rem",
+                                    height: "0.1875rem",
+                                    borderRadius: "0.0625rem",
                                     backgroundColor: "#222",
                                 }}
                             />

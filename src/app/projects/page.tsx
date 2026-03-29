@@ -1,4 +1,8 @@
-import { IconBrandGithub, IconExternalLink } from "@tabler/icons-react";
+import {
+    IconBrandGithub,
+    IconExternalLink,
+    IconStarFilled,
+} from "@tabler/icons-react";
 import { PROFILE_NAME, PROJECTS, SITE_URL } from "@/lib/constants";
 
 export const metadata = {
@@ -90,9 +94,18 @@ export default function ProjectsPage() {
                             className="project-card group flex flex-col gap-3 border-foreground/10 border-b pb-8 last:border-0 last:pb-0"
                         >
                             <div className="flex items-center justify-between gap-4">
-                                <h2 className="font-semibold font-serif text-xl sm:text-2xl">
-                                    {project.title}
-                                </h2>
+                                <div className="flex items-center gap-3">
+                                    <h2 className="font-semibold font-serif text-xl sm:text-2xl">
+                                        {project.title}
+                                    </h2>
+                                    {project.featured && (
+                                        <IconStarFilled
+                                            size={16}
+                                            className="text-yellow-500"
+                                            aria-label="Featured Project"
+                                        />
+                                    )}
+                                </div>
                                 <div className="flex flex-wrap items-center gap-3 text-foreground/60">
                                     {project.github && (
                                         <a

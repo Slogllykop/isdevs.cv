@@ -42,6 +42,7 @@ export const PROJECTS = [
             "Free and Opensource Kanban board with a unique USP - The security is based on the URL. The fastest way to organize your thoughts. No signups, no downloads, just flow.",
         github: "https://github.com/Slogllykop/OpenKanban",
         link: "https://kanban.isdevs.cv",
+        featured: true,
     },
     {
         title: "Clarity",
@@ -49,6 +50,7 @@ export const PROJECTS = [
             "A digital wellbeing Chrome extension that helps you track browsing activity, set website time limits, and stay in control of your screen time, all while keeping your data fully offline.",
         github: "https://github.com/Slogllykop/Clarity",
         link: "https://clarity.isdevs.cv",
+        featured: true,
     },
     {
         title: "Oculus",

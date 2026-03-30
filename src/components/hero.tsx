@@ -57,7 +57,7 @@ const Polaroid = () => {
 
 export const Hero = () => {
     return (
-        <section className="grid grid-cols-1 gap-12 pt-4 pb-20 md:grid-cols-5 md:items-center md:py-20">
+        <section className="grid grid-cols-1 gap-12 pt-4 pb-20 md:grid-cols-5 md:items-center md:py-[1.25rem_0]">
             <div className="flex flex-col gap-8 md:col-span-3">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

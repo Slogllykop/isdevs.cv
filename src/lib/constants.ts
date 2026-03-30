@@ -58,6 +58,7 @@ export const PROJECTS = [
             "About Share your screen instantly with zero friction. Oculus is a secure, P2P screen sharing tool that works entirely in your browser in the form of a chrome extension.",
         github: "https://github.com/Slogllykop/Oculus-2.0",
         link: "https://oculus.isdevs.cv",
+        featured: true,
     },
     {
         title: "Echo",

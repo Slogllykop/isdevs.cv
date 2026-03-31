@@ -35,6 +35,7 @@ export const metadata: Metadata = {
         "Portfolio",
         "Software Engineer",
         "JavaScript Developer",
+        "slogllykop",
     ],
     authors: [{ name: PROFILE_NAME, url: SITE_URL }],
     creator: PROFILE_NAME,

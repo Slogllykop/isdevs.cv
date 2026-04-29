@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useState } from "react";
 
+import { usePrefersReducedMotion } from "@/lib/use-reduced-motion";
 import { cn } from "@/lib/utils";
 
 // Custom hook for theme toggle functionality
@@ -44,26 +45,28 @@ export const useThemeToggle = ({
         styleElement.textContent = css;
     }, []);
 
-    const toggleTheme = useCallback(() => {
-        setIsDark(!isDark);
+    const toggleTheme = useCallback(
+        (reducedMotion = false) => {
+            setIsDark(!isDark);
 
-        const animation = createAnimation(variant, start, blur, gifUrl);
+            if (typeof window === "undefined") return;
 
-        updateStyles(animation.css, animation.name);
+            const switchTheme = () => {
+                setTheme(theme === "light" ? "dark" : "light");
+            };
 
-        if (typeof window === "undefined") return;
+            // Skip view transition when user prefers reduced motion
+            if (reducedMotion || !document.startViewTransition) {
+                switchTheme();
+                return;
+            }
 
-        const switchTheme = () => {
-            setTheme(theme === "light" ? "dark" : "light");
-        };
-
-        if (!document.startViewTransition) {
-            switchTheme();
-            return;
-        }
-
-        document.startViewTransition(switchTheme);
-    }, [theme, setTheme, variant, start, blur, gifUrl, updateStyles, isDark]);
+            const animation = createAnimation(variant, start, blur, gifUrl);
+            updateStyles(animation.css, animation.name);
+            document.startViewTransition(switchTheme);
+        },
+        [theme, setTheme, variant, start, blur, gifUrl, updateStyles, isDark],
+    );
 
     const setCrazyLightTheme = useCallback(() => {
         setIsDark(false);
@@ -163,6 +166,7 @@ export const ThemeToggleButton = ({
         blur,
         gifUrl,
     });
+    const prefersReduced = usePrefersReducedMotion();
 
     return (
         <button
@@ -171,17 +175,29 @@ export const ThemeToggleButton = ({
                 "relative flex size-9 cursor-pointer items-center justify-center rounded-full transition-colors hover:bg-black/5 active:scale-95 dark:hover:bg-white/10",
                 className,
             )}
-            onClick={toggleTheme}
+            onClick={() => toggleTheme(prefersReduced)}
             aria-label="Toggle theme"
         >
             <span className="sr-only">Toggle theme</span>
             <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                     key={isDark ? "dark" : "light"}
-                    initial={{ scale: 0, opacity: 0, rotate: -180 }}
+                    initial={
+                        prefersReduced
+                            ? false
+                            : { scale: 0, opacity: 0, rotate: -180 }
+                    }
                     animate={{ scale: 1, opacity: 1, rotate: 0 }}
-                    exit={{ scale: 0, opacity: 0, rotate: -180 }}
-                    transition={{ duration: 0.3, ease: "backOut" }}
+                    exit={
+                        prefersReduced
+                            ? { opacity: 0 }
+                            : { scale: 0, opacity: 0, rotate: -180 }
+                    }
+                    transition={
+                        prefersReduced
+                            ? { duration: 0 }
+                            : { duration: 0.3, ease: "backOut" }
+                    }
                     className="flex items-center justify-center font-medium"
                 >
                     {isDark ? (

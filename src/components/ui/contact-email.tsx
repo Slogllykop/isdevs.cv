@@ -4,10 +4,13 @@ import { IconCheck, IconCopy, IconMail } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { CONTACT_EMAIL } from "@/lib/constants";
+import { usePrefersReducedMotion } from "@/lib/use-reduced-motion";
 import { cn } from "@/lib/utils";
 
 export function ContactEmail() {
     const [copied, setCopied] = useState(false);
+    const prefersReduced = usePrefersReducedMotion();
+    const noMotion = { duration: 0 };
 
     const handleCopy = async (e: React.MouseEvent) => {
         e.preventDefault();
@@ -27,8 +30,8 @@ export function ContactEmail() {
                 onClick={handleCopy}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                whileTap={{ scale: 0.995 }}
+                transition={prefersReduced ? noMotion : { duration: 0.4 }}
+                whileTap={prefersReduced ? undefined : { scale: 0.995 }}
                 className={cn(
                     "group relative flex min-h-22 flex-3 items-center justify-between gap-6 overflow-hidden rounded-[2rem] border border-foreground/10 bg-foreground/2 px-8 py-5 transition-all hover:bg-foreground/4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50",
                 )}
@@ -48,13 +51,24 @@ export function ContactEmail() {
                         {copied ? (
                             <motion.div
                                 key="check"
-                                initial={{
-                                    opacity: 0,
-                                    scale: 0.5,
-                                    rotate: -20,
-                                }}
+                                initial={
+                                    prefersReduced
+                                        ? false
+                                        : {
+                                              opacity: 0,
+                                              scale: 0.5,
+                                              rotate: -20,
+                                          }
+                                }
                                 animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                                exit={{ opacity: 0, scale: 0.5 }}
+                                exit={
+                                    prefersReduced
+                                        ? { opacity: 0 }
+                                        : { opacity: 0, scale: 0.5 }
+                                }
+                                transition={
+                                    prefersReduced ? noMotion : undefined
+                                }
                                 className="text-foreground"
                                 aria-live="polite"
                             >
@@ -63,9 +77,20 @@ export function ContactEmail() {
                         ) : (
                             <motion.div
                                 key="copy"
-                                initial={{ opacity: 0, scale: 0.5 }}
+                                initial={
+                                    prefersReduced
+                                        ? false
+                                        : { opacity: 0, scale: 0.5 }
+                                }
                                 animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 1.5 }}
+                                exit={
+                                    prefersReduced
+                                        ? { opacity: 0 }
+                                        : { opacity: 0, scale: 1.5 }
+                                }
+                                transition={
+                                    prefersReduced ? noMotion : undefined
+                                }
                                 className="text-foreground/40 transition-colors group-hover:text-foreground"
                             >
                                 <IconCopy size={20} className="lg:size-6" />
@@ -78,8 +103,10 @@ export function ContactEmail() {
             <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-                whileTap={{ scale: 0.98 }}
+                transition={
+                    prefersReduced ? noMotion : { duration: 0.4, delay: 0.1 }
+                }
+                whileTap={prefersReduced ? undefined : { scale: 0.98 }}
                 className="flex flex-1"
             >
                 <a

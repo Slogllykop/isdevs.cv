@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import Image from "next/image";
 import { EXPERIENCES } from "@/lib/constants";
+import { usePrefersReducedMotion } from "@/lib/use-reduced-motion";
 
 // Uniform timeline indicator - simple and clean
 const TimelineIndicator = () => (
@@ -10,6 +11,8 @@ const TimelineIndicator = () => (
 );
 
 export function JobsTimeline() {
+    const prefersReduced = usePrefersReducedMotion();
+
     return (
         <div className="relative ml-4 flex flex-col gap-12 border-foreground/10 border-l pl-8 sm:ml-6 sm:gap-16">
             {EXPERIENCES.map((job, index) => (
@@ -18,7 +21,11 @@ export function JobsTimeline() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    transition={
+                        prefersReduced
+                            ? { duration: 0 }
+                            : { duration: 0.5, delay: index * 0.1 }
+                    }
                     className="relative flex flex-col gap-4"
                 >
                     {/* Timeline dot */}

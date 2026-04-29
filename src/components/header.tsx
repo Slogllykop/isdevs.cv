@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CONTACT_EMAIL, NAV_LINKS, PROFILE_NAME } from "@/lib/constants";
+import { usePrefersReducedMotion } from "@/lib/use-reduced-motion";
 import { ThemeToggleButton } from "./ui/skiper-ui/skiper26";
 
 export function Header() {
@@ -13,6 +14,7 @@ export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
+    const prefersReduced = usePrefersReducedMotion();
 
     // Handle scroll for seamless transition
     useEffect(() => {
@@ -57,6 +59,9 @@ export function Header() {
         }
     }, [pathname]);
 
+    // Reduced-motion variants for icon swap — instant swap
+    const iconTransition = prefersReduced ? { duration: 0 } : { duration: 0.2 };
+
     return (
         <header
             className={`sticky top-0 z-50 w-full transition-all duration-500 ${
@@ -95,11 +100,15 @@ export function Header() {
                                 <motion.div
                                     layoutId="nav-underline"
                                     className="-bottom-1 absolute left-0 h-0.25 w-full bg-foreground"
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 380,
-                                        damping: 30,
-                                    }}
+                                    transition={
+                                        prefersReduced
+                                            ? { duration: 0 }
+                                            : {
+                                                  type: "spring",
+                                                  stiffness: 380,
+                                                  damping: 30,
+                                              }
+                                    }
                                 />
                             )}
                         </Link>
@@ -122,20 +131,36 @@ export function Header() {
                             {isOpen ? (
                                 <motion.div
                                     key="close"
-                                    initial={{ opacity: 0, rotate: -90 }}
+                                    initial={
+                                        prefersReduced
+                                            ? false
+                                            : { opacity: 0, rotate: -90 }
+                                    }
                                     animate={{ opacity: 1, rotate: 0 }}
-                                    exit={{ opacity: 0, rotate: 90 }}
-                                    transition={{ duration: 0.2 }}
+                                    exit={
+                                        prefersReduced
+                                            ? { opacity: 0 }
+                                            : { opacity: 0, rotate: 90 }
+                                    }
+                                    transition={iconTransition}
                                 >
                                     <IconX size="1.25rem" />
                                 </motion.div>
                             ) : (
                                 <motion.div
                                     key="menu"
-                                    initial={{ opacity: 0, rotate: 90 }}
+                                    initial={
+                                        prefersReduced
+                                            ? false
+                                            : { opacity: 0, rotate: 90 }
+                                    }
                                     animate={{ opacity: 1, rotate: 0 }}
-                                    exit={{ opacity: 0, rotate: -90 }}
-                                    transition={{ duration: 0.2 }}
+                                    exit={
+                                        prefersReduced
+                                            ? { opacity: 0 }
+                                            : { opacity: 0, rotate: -90 }
+                                    }
+                                    transition={iconTransition}
                                 >
                                     <IconMenu2 size="1.25rem" />
                                 </motion.div>
@@ -164,18 +189,22 @@ export function Header() {
                             variants={{
                                 closed: {
                                     scale: 0,
-                                    transition: {
-                                        duration: 0.4,
-                                        ease: [0.4, 0, 0.2, 1],
-                                        delay: 0.2,
-                                    },
+                                    transition: prefersReduced
+                                        ? { duration: 0 }
+                                        : {
+                                              duration: 0.4,
+                                              ease: [0.4, 0, 0.2, 1],
+                                              delay: 0.2,
+                                          },
                                 },
                                 open: {
                                     scale: 3000, // Very large to cover screen from a tiny dot
-                                    transition: {
-                                        duration: 0.5,
-                                        ease: [0.4, 0, 0.2, 1],
-                                    },
+                                    transition: prefersReduced
+                                        ? { duration: 0 }
+                                        : {
+                                              duration: 0.5,
+                                              ease: [0.4, 0, 0.2, 1],
+                                          },
                                 },
                             }}
                             style={{
@@ -190,17 +219,21 @@ export function Header() {
                             variants={{
                                 closed: {
                                     opacity: 0,
-                                    transition: {
-                                        staggerChildren: 0.05,
-                                        staggerDirection: -1,
-                                    },
+                                    transition: prefersReduced
+                                        ? { duration: 0 }
+                                        : {
+                                              staggerChildren: 0.05,
+                                              staggerDirection: -1,
+                                          },
                                 },
                                 open: {
                                     opacity: 1,
-                                    transition: {
-                                        delayChildren: 0.3, // Wait for background to grow
-                                        staggerChildren: 0.1,
-                                    },
+                                    transition: prefersReduced
+                                        ? { duration: 0 }
+                                        : {
+                                              delayChildren: 0.3, // Wait for background to grow
+                                              staggerChildren: 0.1,
+                                          },
                                 },
                             }}
                         >
@@ -208,10 +241,23 @@ export function Header() {
                                 {NAV_LINKS.map((link) => (
                                     <motion.div
                                         key={link.href}
-                                        variants={{
-                                            closed: { y: 20, opacity: 0 },
-                                            open: { y: 0, opacity: 1 },
-                                        }}
+                                        variants={
+                                            prefersReduced
+                                                ? {
+                                                      closed: { opacity: 0 },
+                                                      open: { opacity: 1 },
+                                                  }
+                                                : {
+                                                      closed: {
+                                                          y: 20,
+                                                          opacity: 0,
+                                                      },
+                                                      open: {
+                                                          y: 0,
+                                                          opacity: 1,
+                                                      },
+                                                  }
+                                        }
                                     >
                                         <Link
                                             href={link.href}
@@ -234,7 +280,11 @@ export function Header() {
                                     open: { opacity: 1 },
                                 }}
                                 className="absolute bottom-12 text-center"
-                                transition={{ delay: 0.8 }}
+                                transition={
+                                    prefersReduced
+                                        ? { duration: 0 }
+                                        : { delay: 0.8 }
+                                }
                             >
                                 <p className="font-medium text-foreground/40 text-sm uppercase tracking-widest">
                                     Get in touch

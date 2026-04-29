@@ -2,9 +2,11 @@
 
 import { motion, useMotionValue, useSpring } from "motion/react";
 import { useEffect, useState } from "react";
+import { usePrefersReducedMotion } from "@/lib/use-reduced-motion";
 
 export function Cursor() {
     const [mounted, setMounted] = useState(false);
+    const prefersReduced = usePrefersReducedMotion();
 
     // Smooth trailing effect using motion springs
     const mouseX = useMotionValue(0);
@@ -18,6 +20,10 @@ export function Cursor() {
 
     useEffect(() => {
         setMounted(true);
+
+        // Skip mouse tracking entirely when reduced motion is preferred
+        if (prefersReduced) return;
+
         let timeoutId: NodeJS.Timeout;
 
         const handleMouseMove = (e: MouseEvent) => {
@@ -39,9 +45,10 @@ export function Cursor() {
             window.removeEventListener("mousemove", handleMouseMove);
             clearTimeout(timeoutId);
         };
-    }, [mouseX, mouseY, scale]);
+    }, [mouseX, mouseY, scale, prefersReduced]);
 
-    if (!mounted) return null;
+    // Don't render the trailing cursor dot at all when reduced motion is preferred
+    if (!mounted || prefersReduced) return null;
 
     return (
         <motion.div

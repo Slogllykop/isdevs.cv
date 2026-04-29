@@ -9,12 +9,16 @@ import {
     PROFILE_NAME,
     SOCIAL_LINKS,
 } from "@/lib/constants";
+import { usePrefersReducedMotion } from "@/lib/use-reduced-motion";
 
 const Tape = () => (
     <div className="-rotate-2 -translate-x-1/2 -translate-y-1/2 absolute top-0 left-1/2 z-10 h-10 w-28 rounded-sm bg-foreground/15 shadow-sm backdrop-blur-[0.125rem] transition-all duration-500 before:absolute before:inset-0 before:bg-linear-to-r before:from-transparent before:via-white/5 before:to-transparent" />
 );
 
 const Polaroid = () => {
+    const prefersReduced = usePrefersReducedMotion();
+    const noMotion = { duration: 0 };
+
     return (
         <motion.div
             initial={{
@@ -29,12 +33,19 @@ const Polaroid = () => {
                 opacity: 1,
                 boxShadow: "0 1.25rem 3.125rem rgba(0,0,0,0.1)",
             }}
-            whileHover={{
-                rotate: 0,
-                boxShadow: "0 2.5rem 5rem rgba(0,0,0,0.15)",
-                transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-            }}
-            transition={{ duration: 0.5 }}
+            whileHover={
+                prefersReduced
+                    ? undefined
+                    : {
+                          rotate: 0,
+                          boxShadow: "0 2.5rem 5rem rgba(0,0,0,0.15)",
+                          transition: {
+                              duration: 0.6,
+                              ease: [0.22, 1, 0.36, 1],
+                          },
+                      }
+            }
+            transition={prefersReduced ? noMotion : { duration: 0.5 }}
             className="group relative flex flex-col items-center bg-card p-4 pb-14 ring-1 ring-border/20 dark:shadow-[0_0_2.5rem_rgba(0,0,0,0.4)] dark:ring-white/5"
         >
             <Tape />
@@ -56,13 +67,16 @@ const Polaroid = () => {
 };
 
 export const Hero = () => {
+    const prefersReduced = usePrefersReducedMotion();
+    const noMotion = { duration: 0 };
+
     return (
         <section className="grid grid-cols-1 gap-12 pt-4 pb-20 md:grid-cols-5 md:items-center md:py-[1.25rem_0]">
             <div className="flex flex-col gap-8 md:col-span-3">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
+                    transition={prefersReduced ? noMotion : { duration: 0.5 }}
                     className="flex flex-col gap-6"
                 >
                     <h1 className="max-w-xl font-bold font-serif text-4xl leading-tight tracking-tight sm:text-5xl md:text-6xl">
@@ -75,7 +89,9 @@ export const Hero = () => {
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
+                        transition={
+                            prefersReduced ? noMotion : { duration: 0.5 }
+                        }
                     >
                         <a
                             href="/resume.pdf"
@@ -92,7 +108,11 @@ export const Hero = () => {
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.3, duration: 0.5 }}
+                    transition={
+                        prefersReduced
+                            ? noMotion
+                            : { delay: 0.3, duration: 0.5 }
+                    }
                     className="flex flex-col gap-8"
                 >
                     <div className="h-0.75 w-12 bg-foreground/15" />

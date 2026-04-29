@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import Image from "next/image";
+import { BlurImage } from "@/components/ui/blur-image";
 import { EXPERIENCES } from "@/lib/constants";
 import { usePrefersReducedMotion } from "@/lib/use-reduced-motion";
 
@@ -40,14 +40,16 @@ export function JobsTimeline() {
                             </h2>
                             <div className="flex items-center gap-2.5">
                                 {job.logo && (
-                                    <div className="relative size-8 overflow-hidden rounded-md border border-foreground/10 bg-white/5">
-                                        <Image
-                                            src={job.logo}
-                                            alt={`${job.company} logo`}
-                                            fill
-                                            className="rounded-md object-contain p-0.5"
-                                        />
-                                    </div>
+                                    <BlurImage
+                                        src={job.logo}
+                                        alt={`${job.company} logo`}
+                                        fill
+                                        blurSrc={`/blur/${job.logo.replace(/\.[^.]+$/, "").replace(/^\//, "")}.webp`}
+                                        blurSize="contain"
+                                        blurPosition="center"
+                                        containerClassName="relative size-8 rounded-md border border-foreground/10 bg-white/5"
+                                        className="rounded-md object-contain p-0.5"
+                                    />
                                 )}
                                 <span className="font-medium text-foreground/80">
                                     {job.company}

@@ -2,7 +2,7 @@
 
 import { IconFileText } from "@tabler/icons-react";
 import { motion } from "motion/react";
-import Image from "next/image";
+import { BlurImage } from "@/components/ui/blur-image";
 import {
     GREETING,
     PROFILE_IMAGE,
@@ -49,16 +49,16 @@ const Polaroid = () => {
             className="group relative flex flex-col items-center bg-card p-4 pb-14 ring-1 ring-border/20 dark:shadow-[0_0_2.5rem_rgba(0,0,0,0.4)] dark:ring-white/5"
         >
             <Tape />
-            <div className="relative h-86.5 w-69 overflow-hidden border border-foreground/10 bg-muted grayscale transition-all duration-700 group-hover:grayscale-0">
-                <Image
-                    src={PROFILE_IMAGE}
-                    alt={PROFILE_NAME}
-                    fill
-                    sizes="17.25rem"
-                    className="object-cover transition-transform duration-700"
-                    priority
-                />
-            </div>
+            <BlurImage
+                src={PROFILE_IMAGE}
+                alt={PROFILE_NAME}
+                fill
+                sizes="17.25rem"
+                blurSrc="/blur/profile.webp"
+                containerClassName="relative h-86.5 w-69 border border-foreground/10 bg-muted grayscale transition-all duration-700 group-hover:grayscale-0"
+                className="object-cover transition-transform duration-700"
+                priority
+            />
             <p className="mt-8 font-serif text-sm italic tracking-tight opacity-40">
                 Pune, India
             </p>

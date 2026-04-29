@@ -140,6 +140,51 @@ button {
     }
 }
 
+/* ── Blur-image lazy loading ────────────────────────────────── */
+
+.blur-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Pulse overlay - subtle "loading" indicator */
+.blur-image-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: oklch(0.5 0 0 / 8%);
+    animation: blur-pulse 1.6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Remove pulse once loaded */
+.blur-image--loaded::before {
+    animation: none;
+    opacity: 0;
+}
+
+/* The actual <img> starts invisible, fades in */
+.blur-image-inner {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+.blur-image--loaded .blur-image-inner {
+    opacity: 1;
+}
+
+@keyframes blur-pulse {
+    0%,
+    100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     *,
     ::before,

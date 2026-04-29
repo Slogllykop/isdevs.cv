@@ -124,7 +124,7 @@ export default async function BlogsPage() {
                                 href={blog.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="blog-card group block"
+                                className="blog-card group block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50"
                             >
                                 <article className="flex flex-col gap-2 border-foreground/10 border-b pb-8 last:border-0 last:pb-0">
                                     <div className="flex flex-col gap-2">
@@ -181,6 +181,15 @@ export default async function BlogsPage() {
                                 </article>
                             </a>
                         ))
+                    )}
+
+
+                    {blogs.length > 0 && (
+                        <div className="flex items-center justify-center pt-8 pb-4">
+                            <p className="text-foreground/60 text-sm italic">
+                                More posts coming soon…
+                            </p>
+                        </div>
                     )}
                 </div>
             </div>

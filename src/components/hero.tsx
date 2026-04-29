@@ -81,7 +81,7 @@ export const Hero = () => {
                             href="/resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 rounded-lg border border-foreground/15 px-5 py-2.5 font-medium text-foreground/70 text-sm transition-all hover:border-foreground/30 hover:bg-foreground/5 hover:text-foreground"
+                            className="inline-flex items-center gap-2 rounded-lg border border-foreground/15 px-5 py-2.5 font-medium text-foreground/70 text-sm transition-all hover:border-foreground/30 hover:bg-foreground/5 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50"
                         >
                             <IconFileText size={16} stroke={2} />
                             View Resume
@@ -107,7 +107,7 @@ export const Hero = () => {
                                     href={link.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="font-medium text-foreground/50 transition-colors hover:text-foreground"
+                                    className="rounded-sm font-medium text-foreground/50 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50"
                                 >
                                     {link.name}
                                 </a>

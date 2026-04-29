@@ -112,7 +112,7 @@ export default function ProjectsPage() {
                                             href={project.github}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="p-1 transition-colors hover:text-foreground"
+                                            className="rounded-sm p-1 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50"
                                             aria-label={`GitHub Repository for ${project.title}`}
                                         >
                                             <IconBrandGithub
@@ -126,7 +126,7 @@ export default function ProjectsPage() {
                                             href={project.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="p-1 transition-colors hover:text-foreground"
+                                            className="rounded-sm p-1 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50"
                                             aria-label={`Live Project for ${project.title}`}
                                         >
                                             <IconExternalLink

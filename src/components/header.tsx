@@ -69,7 +69,7 @@ export function Header() {
                 {/* Logo */}
                 <Link
                     href="/"
-                    className="group relative z-50 font-medium font-serif text-xl tracking-tight transition-opacity hover:opacity-80 md:text-2xl"
+                    className="group relative z-50 rounded-sm font-medium font-serif text-xl tracking-tight transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 md:text-2xl"
                 >
                     {firstName}.
                     <motion.div
@@ -84,7 +84,7 @@ export function Header() {
                         <Link
                             key={link.href}
                             href={link.href}
-                            className={`relative font-medium text-sm transition-colors hover:text-foreground/80 ${
+                            className={`relative rounded-sm font-medium text-sm transition-colors hover:text-foreground/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 ${
                                 pathname === link.href
                                     ? "text-foreground"
                                     : "text-foreground/80"
@@ -204,7 +204,7 @@ export function Header() {
                                 },
                             }}
                         >
-                            <div className="flex flex-col items-center gap-6">
+                            <nav className="flex flex-col items-center gap-6">
                                 {NAV_LINKS.map((link) => (
                                     <motion.div
                                         key={link.href}
@@ -215,7 +215,7 @@ export function Header() {
                                     >
                                         <Link
                                             href={link.href}
-                                            className={`font-medium font-serif text-3xl tracking-tight transition-colors hover:text-foreground/60 md:text-4xl ${
+                                            className={`rounded-md font-medium font-serif text-3xl tracking-tight transition-colors hover:text-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 md:text-4xl ${
                                                 pathname === link.href
                                                     ? "text-foreground"
                                                     : "text-foreground/75"
@@ -225,7 +225,7 @@ export function Header() {
                                         </Link>
                                     </motion.div>
                                 ))}
-                            </div>
+                            </nav>
 
                             {/* Optional Bottom Contact Info */}
                             <motion.div

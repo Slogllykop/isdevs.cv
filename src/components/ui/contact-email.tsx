@@ -30,7 +30,7 @@ export function ContactEmail() {
                 transition={{ duration: 0.4 }}
                 whileTap={{ scale: 0.995 }}
                 className={cn(
-                    "group relative flex min-h-22 flex-3 items-center justify-between gap-6 overflow-hidden rounded-[2rem] border border-foreground/10 bg-foreground/2 px-8 py-5 transition-all hover:bg-foreground/4",
+                    "group relative flex min-h-22 flex-3 items-center justify-between gap-6 overflow-hidden rounded-[2rem] border border-foreground/10 bg-foreground/2 px-8 py-5 transition-all hover:bg-foreground/4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50",
                 )}
                 aria-label={copied ? "Email copied" : "Copy email address"}
             >
@@ -84,7 +84,7 @@ export function ContactEmail() {
             >
                 <a
                     href={`mailto:${CONTACT_EMAIL}`}
-                    className="flex h-full min-h-22 w-full items-center justify-center rounded-[2rem] bg-foreground text-background transition-all hover:bg-foreground/90 active:scale-[0.98]"
+                    className="flex h-full min-h-22 w-full items-center justify-center rounded-[2rem] bg-foreground text-background transition-all hover:bg-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 active:scale-[0.98]"
                     title="Open in mail client"
                     aria-label="Open email client"
                 >

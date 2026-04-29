@@ -10,7 +10,7 @@ export function Footer() {
                 </p>
                 <a
                     href={`mailto:${CONTACT_EMAIL}`}
-                    className="font-medium text-foreground/50 text-sm transition-colors hover:text-foreground"
+                    className="rounded-sm font-medium text-foreground/50 text-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50"
                 >
                     {CONTACT_EMAIL}
                 </a>

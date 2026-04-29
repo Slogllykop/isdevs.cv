@@ -183,7 +183,6 @@ export default async function BlogsPage() {
                         ))
                     )}
 
-
                     {blogs.length > 0 && (
                         <div className="flex items-center justify-center pt-8 pb-4">
                             <p className="text-foreground/60 text-sm italic">

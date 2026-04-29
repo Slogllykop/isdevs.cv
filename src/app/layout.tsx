@@ -23,6 +23,11 @@ export const metadata: Metadata = {
     },
     description: `${PROFILE_NAME} is a results-driven Frontend Engineer specializing in React, Next.js, and TypeScript. Building high-quality, performant web applications with clean, scalable code. Based in Pune, India.`,
     keywords: [
+        PROFILE_NAME,
+        `${PROFILE_NAME} portfolio`,
+        `${PROFILE_NAME.at(0)} portfolio`,
+        "frontend developer portfolio",
+        "web developer portfolio",
         "isdevs.cv",
         "isdevs",
         PROFILE_NAME,

@@ -15,6 +15,7 @@ export const GREETING =
 export const EXPERIENCES = [
     {
         company: "Bloomintek",
+        logo: "/bloomintek.jpg",
         role: "Frontend Engineer (Part Time)",
         date: "Aug 2024 - Mar 2025",
         description: [
@@ -25,6 +26,7 @@ export const EXPERIENCES = [
     },
     {
         company: "Bloomintek",
+        logo: "/bloomintek.jpg",
         role: "Frontend Engineer (Intern)",
         date: "Feb 2024 - Aug 2024",
         description: [

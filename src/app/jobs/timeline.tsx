@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import { EXPERIENCES } from "@/lib/constants";
 
 // Uniform timeline indicator - simple and clean
@@ -30,9 +31,21 @@ export function JobsTimeline() {
                             <h2 className="font-semibold font-serif text-xl sm:text-2xl">
                                 {job.role}
                             </h2>
-                            <span className="font-medium text-foreground/80">
-                                {job.company}
-                            </span>
+                            <div className="flex items-center gap-2.5">
+                                {job.logo && (
+                                    <div className="relative size-8 overflow-hidden rounded-md border border-foreground/10 bg-white/5">
+                                        <Image
+                                            src={job.logo}
+                                            alt={`${job.company} logo`}
+                                            fill
+                                            className="rounded-md object-contain p-0.5"
+                                        />
+                                    </div>
+                                )}
+                                <span className="font-medium text-foreground/80">
+                                    {job.company}
+                                </span>
+                            </div>
                         </div>
                         <span className="shrink-0 font-medium text-foreground/60 text-sm">
                             {job.date}

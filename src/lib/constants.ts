@@ -1,7 +1,40 @@
-export const PROFILE_NAME = "Indraneel Sinare";
-export const PROFILE_IMAGE = "/profile.png";
-export const GRAIN_IMAGE = "/paper-transparent.png";
-export const NAV_LINKS = [
+export interface NavLink {
+    name: string;
+    href: string;
+}
+
+export interface Experience {
+    company: string;
+    logo: string;
+    role: string;
+    date: string;
+    description: string[];
+}
+
+export interface Project {
+    title: string;
+    description: string;
+    github: string;
+    link?: string;
+    featured?: boolean;
+}
+
+export interface Skill {
+    name: string;
+    description: string;
+    icon: string;
+}
+
+export interface SocialLink {
+    name: string;
+    href: string;
+    icon: string;
+}
+
+export const PROFILE_NAME: string = "Indraneel Sinare";
+export const PROFILE_IMAGE: string = "/profile.png";
+export const GRAIN_IMAGE: string = "/paper-transparent.png";
+export const NAV_LINKS: NavLink[] = [
     { name: "Projects", href: "/projects" },
     { name: "Jobs", href: "/jobs" },
     { name: "Skills", href: "/skills" },
@@ -9,10 +42,21 @@ export const NAV_LINKS = [
     { name: "Contact", href: "/contact" },
 ];
 
-export const GREETING =
+export const GREETING: string =
     "Results-driven Frontend Engineer with more than 1 year of experience in developing high-quality web applications utilizing JavaScript/TypeScript and frameworks such as React and NextJS. Dedicated to producing clean, efficient, and maintainable code while ensuring outstanding user experiences.";
 
-export const EXPERIENCES = [
+export const EXPERIENCES: Experience[] = [
+    {
+        company: "Bloomintek",
+        logo: "/bloomintek.jpg",
+        role: "Software Development Engineer - I",
+        date: "Jul 2026 - Present",
+        description: [
+            "Contributed to the migration of legacy frontend applications to modern React and Next.js architectures, enhancing codebase maintainability and performance.",
+            "Designed and implemented comprehensive end-to-end (E2E) testing suites to ensure application stability and regression-free deployments.",
+            "Developed and shipped high-priority features for client projects, focusing on responsive design, performance, and user experience.",
+        ],
+    },
     {
         company: "Bloomintek",
         logo: "/bloomintek.jpg",
@@ -37,7 +81,7 @@ export const EXPERIENCES = [
     },
 ];
 
-export const PROJECTS = [
+export const PROJECTS: Project[] = [
     {
         title: "OpenKanban",
         description:
@@ -77,7 +121,7 @@ export const PROJECTS = [
     },
 ];
 
-export const SKILLS = [
+export const SKILLS: Skill[] = [
     { name: "Next.js", description: "React Framework", icon: "brand-next-js" },
     { name: "React", description: "UI Component Library", icon: "brand-react" },
     {
@@ -152,11 +196,11 @@ export const SKILLS = [
     },
 ];
 
-export const CONTACT_EMAIL = "to@isdevs.cv";
+export const CONTACT_EMAIL: string = "to@isdevs.cv";
 
-export const SITE_URL = "https://www.isdevs.cv";
+export const SITE_URL: string = "https://www.isdevs.cv";
 
-export const SOCIAL_LINKS = [
+export const SOCIAL_LINKS: SocialLink[] = [
     {
         name: "LinkedIn",
         href: "https://www.linkedin.com/in/indraneel-sinare",
